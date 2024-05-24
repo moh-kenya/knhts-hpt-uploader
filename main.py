@@ -1,44 +1,97 @@
 import openpyxl
 
 from concept import Concept
+from concept_meta import ConceptName, ConceptDescription
 from http_utils import post_concept
 
+
+def add_concepts_to_list(r):
+    brand_proprietary_name = sheet.cell(row=r, column=4).value
+    inn = sheet.cell(row=r, column=5).value
+    strength = sheet.cell(row=r, column=6).value
+    dosage_form = sheet.cell(row=r, column=7).value
+    route_of_administration = sheet.cell(row=r, column=8).value
+    pack_size = sheet.cell(row=r, column=9).value
+    shelf_life = sheet.cell(row=r, column=13).value
+    storage_conditions = sheet.cell(row=r, column=14).value
+    registration_number = sheet.cell(row=r, column=16).value
+    country_of_origin = sheet.cell(row=r, column=22).value
+    atc_code = sheet.cell(row=r, column=23).value
+    product_visual_descriptions = sheet.cell(row=r, column=29).value
+    therapeutic_classification = sheet.cell(row=r, column=25).value
+    if therapeutic_classification not in sub_domains_list:
+        sub_domains_list.append(therapeutic_classification)
+
+    if brand_proprietary_name:
+        pharm = Concept(brand_proprietary_name=brand_proprietary_name, inn=inn,
+                        product_visual_descriptions=product_visual_descriptions)
+        pharm.display_name = brand_proprietary_name
+        pharm.extras = {"atc_code": atc_code, "strength": strength, "dosage_form": dosage_form,
+                        "route_of_administration": route_of_administration, "pack_size": pack_size,
+                        "shelf_life": shelf_life, "storage_conditions": storage_conditions,
+                        "registration_number": registration_number}
+        if country_of_origin:
+            pharm.extras["country_of_origin"] = country_of_origin
+
+        pharm.therapeutic_classification = therapeutic_classification
+        pharm.pk = "{}-{}-{}-{}-{}-{}-{}-{}".format(brand_proprietary_name, inn, strength, dosage_form,
+                                                    route_of_administration, shelf_life, storage_conditions,
+                                                    registration_number)
+
+        concepts_list.append(pharm)
+
+
+def remove_duplicate_concepts():
+    list_of_concepts_to_remove = []
+    for concept_1 in concepts_list:
+        for concept_2 in concepts_list:
+            if (concept_1 != concept_2 and concept_1.pk == concept_2.pk
+                    and concept_1.extras['pack_size'] != concept_2.extras['pack_size']):
+                concept_1_pack_size = concept_1.extras['pack_size']
+                concept_1.extras['pack_size'] = [concept_1_pack_size, concept_2.extras['pack_size']]
+                concepts_list.remove(concept_2)
+
+
+def upload_sub_domains():
+    for tc in sub_domains_list:
+        sub_domain = Concept(brand_proprietary_name=None, inn=None, product_visual_descriptions=None)
+        sub_domain.concept_class = "Subdomain"
+        sub_domain.datatype = "N/A"
+        sub_domain.names = [ConceptName(name=tc, type="FULLY SPECIFIED")]
+        sub_domain.descriptions = [ConceptDescription(tc)]
+        sub_domain.type = "Concept"
+
+        resp_dict = post_concept(concept=sub_domain, parent_id=None, parent_concept_name=None,
+                                 parent_concept_url=None)
+        sub_domains_dict[tc] = resp_dict
+
+
 if __name__ == '__main__':
-    wb = openpyxl.load_workbook("files/excel/hpt_non_pharm_group_22nd_may_5pm.xlsx")
-    sheet = wb["Sheet 1 - md_register"]
+    wb = openpyxl.load_workbook("files/excel/PPB_Pharma_Product_Data.xlsx")
+    sheet = wb["Final_Work"]
 
+    concepts_list = []
+    sub_domains_list = []
+    sub_domains_dict = {}
     for row in range(2, sheet.max_row + 1):
-        atc_code = sheet.cell(row=row, column=1).value
-        generic_name = sheet.cell(row=row, column=2).value
-        strength = sheet.cell(row=row, column=3).value
-        product_form = sheet.cell(row=row, column=4).value
-        product_name_and_brand = sheet.cell(row=row, column=5).value
-        concept_class = sheet.cell(row=row, column=6).value
-        data_type = sheet.cell(row=row, column=7).value
-        route_of_administration = sheet.cell(row=row, column=8).value
-        full_name = "{} {} {}".format(product_name_and_brand, strength, product_form)
+        add_concepts_to_list(row)
 
-        if full_name is not None:
-            drug = Concept(full_name)
-            drug.concept_class = concept_class
-            drug.datatype = data_type
-            drug.extras = {"level": "2", "atc_code": atc_code,
-                           "generic_name": generic_name, "route_of_administration": route_of_administration}
+    remove_duplicate_concepts()
 
-            generic_name_tokens = generic_name.split('/')
-            strength_tokens = strength.split('/')
-            if len(generic_name_tokens) > 0 and len(generic_name_tokens) == len(strength_tokens):
-                active_ingredients = []
-                for idx, item in enumerate(generic_name_tokens):
-                    active_ingredients.append({"name": generic_name_tokens[idx].strip(),
-                                               "strength": strength_tokens[idx].strip()
-                                               })
-                drug.extras["active_ingredients"] = active_ingredients
+    upload_sub_domains()
 
-            drug.print_tree(0, "")
-            #post_concept(concept=drug, parent_id=72182, parent_concept_name="Pharmaceutical Products",
-                        # parent_concept_url="/orgs/MOH-KENYA/sources/PPB/concepts/72182/")
+    for concept in concepts_list:
+        tcc = concept.therapeutic_classification
+        tcc_details = sub_domains_dict[tcc]
+        concept.parent_id = tcc_details['id']
 
-    # for concept in generic_names_list:
-    # post_concept(concept, "", "", "")
-    #
+        try:
+            # concept.print_tree(0, "")
+            post_concept(concept=concept, parent_id=tcc_details['id'], parent_concept_name=tcc_details['name'],
+                         parent_concept_url=tcc_details['url'])
+        except Exception as e:
+            print("Exception ocurred - the error is: ", e)
+            concept.print_tree(0, "")
+            print("\n\n")
+        finally:
+            print("Done with non-pharm")

@@ -4,8 +4,8 @@ import requests
 
 from concept_meta import ConceptMapping
 
-concept_api_url = "http://41.89.92.186:8000/orgs/MOH-KENYA/sources/PPB/concepts/"
-concept_mapping_api_url = "http://41.89.92.186:8000/orgs/MOH-KENYA/sources/PPB/mappings/"
+concept_api_url = "https://knhts.health.go.ke/knhts-api/orgs/MOH-KENYA/sources/PPB_P/concepts/"
+concept_mapping_api_url = "https://knhts.health.go.ke/knhts-api/orgs/MOH-KENYA/sources/PPB_P/mappings/"
 headers = {'Accept': 'application/json', 'Content-Type': 'application/json',
            'Authorization': 'Bearer 891b4b17feab99f3ff7e5b5d04ccc5da7aa96da6'}
 
@@ -28,3 +28,5 @@ def post_concept(concept, parent_id, parent_concept_name, parent_concept_url):
         mdata = json.dumps(concept_mapping, default=vars)
         mresponse = requests.post(concept_mapping_api_url, data=mdata, headers=headers)
         print("{} - {}".format(mresponse.status_code, mresponse.json()))
+
+    return {"id": cid, "name": concept_name, "url": c_concept_url}

@@ -3,17 +3,40 @@ import json
 from concept_meta import ConceptName, ConceptDescription
 
 
+def set_concept_names(brand_proprietary_name, inn):
+    concept_names = []
+    if brand_proprietary_name:
+        concept_name = ConceptName(name=brand_proprietary_name, type="Brand/proprietary")
+        concept_name.locale_preferred = True
+        concept_names.append(concept_name)
+    if inn:
+        concept_name = ConceptName(name=inn, type="INN")
+        concept_names.append(concept_name)
+
+    return concept_names
+
+
+def set_concept_descriptions(product_visual_descriptions, brand_proprietary_name):
+    concept_descriptions = []
+    if product_visual_descriptions:
+        concept_description = ConceptDescription(product_visual_descriptions)
+        concept_descriptions.append(concept_description)
+    else:
+        concept_description = ConceptDescription(brand_proprietary_name)
+        concept_descriptions.append(concept_description)
+    return concept_descriptions
+
+
 class Concept:
-    def __init__(self, display_name):
-        self.concept_class = "None"
+    def __init__(self, brand_proprietary_name, inn, product_visual_descriptions):
+        self.concept_class = "Drug"
         self.datatype = "N/A"
         self.retired: False
         self.owner_type = "Organization"
         self.owner_url = "/orgs/MOH-KENYA/"
-        self.display_name = display_name
         self.display_locale = "en"
-        self.names = [ConceptName(self.display_name)]
-        self.descriptions = [ConceptDescription(self.display_name)]
+        self.names = set_concept_names(brand_proprietary_name, inn)
+        self.descriptions = set_concept_descriptions(product_visual_descriptions, brand_proprietary_name)
         self.type = "Concept"
         self.children = []
 

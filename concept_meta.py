@@ -1,6 +1,7 @@
 class ConceptName(object):
-    def __init__(self, name):
+    def __init__(self, name, type):
         self.name = name
+        self.type = type
         self.locale = "en"
 
 
@@ -21,7 +22,7 @@ class ConceptMapping:
         self.from_concept_name = from_concept_name
         self.to_concept_name = to_concept_name
 
-        self.from_source_url = "/orgs/MOH-KENYA/sources/PPB/"
-        self.to_source_url = "/orgs/MOH-KENYA/sources/PPB/"
+        self.from_source_url = "/orgs/MOH-KENYA/sources/PPB_P/"
+        self.to_source_url = "/orgs/MOH-KENYA/sources/PPB_P/"
         self.map_type = "CONCEPT-SET"
         self.retired = False
