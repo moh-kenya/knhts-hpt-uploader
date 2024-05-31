@@ -4,8 +4,8 @@ import requests
 
 from concept_meta import ConceptMapping
 
-concept_api_url = "https://knhts-staging.health.go.ke/knhts-api/orgs/MOH-KENYA/sources/PPB_P/concepts/"
-concept_mapping_api_url = "https://knhts-staging.health.go.ke/knhts-api/orgs/MOH-KENYA/sources/PPB_P/mappings/"
+concept_api_url = "https://knhts.health.go.ke/knhts-api/orgs/MOH-KENYA/sources/PPB_P/concepts/"
+concept_mapping_api_url = "https://knhts.health.go.ke/knhts-api/orgs/MOH-KENYA/sources/PPB_P/mappings/"
 headers = {'Accept': 'application/json', 'Content-Type': 'application/json',
            'Authorization': 'Bearer 891b4b17feab99f3ff7e5b5d04ccc5da7aa96da6'}
 

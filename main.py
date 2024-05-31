@@ -54,7 +54,12 @@ def remove_duplicate_concepts():
             if (concept_1 != concept_2 and concept_1.pk == concept_2.pk
                     and concept_1.extras['pack_size'] != concept_2.extras['pack_size']):
                 concept_1_pack_size = concept_1.extras['pack_size']
-                concept_1.extras['pack_size'] = [concept_1_pack_size, concept_2.extras['pack_size']]
+                if type(concept_1_pack_size) is list:
+                    concept_1_pack_size.append(concept_2.extras['pack_size'])
+                    concept_1.extras['pack_size'] = concept_1_pack_size
+                else:
+                    concept_1.extras['pack_size'] = [concept_1_pack_size, concept_2.extras['pack_size']]
+
                 concepts_list.remove(concept_2)
 
 
@@ -92,7 +97,7 @@ if __name__ == '__main__':
 
         try:
             pass
-            #concept.print_tree(0, "")
+            # concept.print_tree(0, "")
             post_concept(concept=concept, parent_id=tcc_details['id'], parent_concept_name=tcc_details['name'],
                          parent_concept_url=tcc_details['url'])
         except Exception as e:
