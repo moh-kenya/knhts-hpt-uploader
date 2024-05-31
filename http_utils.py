@@ -52,7 +52,7 @@ def post_concept(concept, parent_id, parent_concept_name, parent_concept_url):
     if hasattr(concept, 'storage_conditions') and concept.storage_conditions:
         concepts_sc = get_concept(concept.storage_conditions)
         process_concept_mapping_metadata(concepts_sc, concept.storage_conditions, cid, c_concept_url, concept_name,
-                                         "storage-condition")
+                                         "Storage-condition")
 
     if hasattr(concept, 'dosage_form') and concept.dosage_form:
         concepts_df = get_concept(concept.dosage_form)
@@ -67,7 +67,7 @@ def post_concept(concept, parent_id, parent_concept_name, parent_concept_url):
     if hasattr(concept, 'shelf_life') and concept.shelf_life:
         concepts_sl = get_concept(concept.shelf_life)
         process_concept_mapping_metadata(concepts_sl, concept.shelf_life, cid, c_concept_url, concept_name,
-                                         "has-shelf-life")
+                                         "Has-shelf-life")
 
     return {"id": cid, "name": concept_name, "url": c_concept_url}
 
