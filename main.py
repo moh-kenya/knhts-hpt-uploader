@@ -1,8 +1,10 @@
+import json
+
 import openpyxl
 
 from concept import Concept
 from concept_meta import ConceptName, ConceptDescription
-from http_utils import post_concept
+from http_utils import post_concept, get_concept
 
 
 def add_concepts_to_list(r):
@@ -17,23 +19,27 @@ def add_concepts_to_list(r):
     registration_number = sheet.cell(row=r, column=16).value
     country_of_origin = sheet.cell(row=r, column=22).value
     atc_code = sheet.cell(row=r, column=23).value
-    product_visual_descriptions = sheet.cell(row=r, column=29).value
-    therapeutic_classification = sheet.cell(row=r, column=25).value
-    if therapeutic_classification not in sub_domains_list:
-        sub_domains_list.append(therapeutic_classification)
+    product_visual_descriptions = sheet.cell(row=r, column=30).value
+    therapeutic_classification_level_3 = sheet.cell(row=r, column=24).value
+    if therapeutic_classification_level_3:
+        therapeutic_classification_level_3 = therapeutic_classification_level_3.title()
+    if therapeutic_classification_level_3 and therapeutic_classification_level_3 not in sub_domains_list:
+        sub_domains_list.append(therapeutic_classification_level_3)
 
     if brand_proprietary_name:
         pharm = Concept(brand_proprietary_name=brand_proprietary_name, inn=inn,
                         product_visual_descriptions=product_visual_descriptions)
         pharm.display_name = brand_proprietary_name
-        pharm.extras = {"atc_code": atc_code, "strength": strength, "dosage_form": dosage_form,
-                        "route_of_administration": route_of_administration, "pack_size": pack_size,
-                        "shelf_life": shelf_life, "storage_conditions": storage_conditions,
+        pharm.extras = {"atc_code": atc_code, "strength": strength, "pack_size": pack_size,
                         "registration_number": registration_number}
+        pharm.storage_conditions = storage_conditions
+        pharm.dosage_form = dosage_form
+        pharm.route_of_administration = route_of_administration
+        pharm.shelf_life = shelf_life
         if country_of_origin:
             pharm.extras["country_of_origin"] = country_of_origin
 
-        pharm.therapeutic_classification = therapeutic_classification
+        pharm.therapeutic_classification = therapeutic_classification_level_3
         pharm.pk = "{}-{}-{}-{}-{}-{}-{}-{}".format(brand_proprietary_name, inn, strength, dosage_form,
                                                     route_of_administration, shelf_life, storage_conditions,
                                                     registration_number)
@@ -60,14 +66,13 @@ def upload_sub_domains():
         sub_domain.names = [ConceptName(name=tc, type="FULLY SPECIFIED")]
         sub_domain.descriptions = [ConceptDescription(tc)]
         sub_domain.type = "Concept"
-
         resp_dict = post_concept(concept=sub_domain, parent_id=None, parent_concept_name=None,
                                  parent_concept_url=None)
         sub_domains_dict[tc] = resp_dict
 
 
 if __name__ == '__main__':
-    wb = openpyxl.load_workbook("files/excel/PPB_Pharma_Product_Data.xlsx")
+    wb = openpyxl.load_workbook("files/excel/PPB_Pharma_Product_31st_May_2024.xlsx")
     sheet = wb["Final_Work"]
 
     concepts_list = []
@@ -86,7 +91,8 @@ if __name__ == '__main__':
         concept.parent_id = tcc_details['id']
 
         try:
-            # concept.print_tree(0, "")
+            pass
+            #concept.print_tree(0, "")
             post_concept(concept=concept, parent_id=tcc_details['id'], parent_concept_name=tcc_details['name'],
                          parent_concept_url=tcc_details['url'])
         except Exception as e:
@@ -94,4 +100,4 @@ if __name__ == '__main__':
             concept.print_tree(0, "")
             print("\n\n")
         finally:
-            print("Done with non-pharm")
+            print("Done with pharm")

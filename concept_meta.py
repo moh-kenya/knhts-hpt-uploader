@@ -12,7 +12,8 @@ class ConceptDescription:
 
 
 class ConceptMapping:
-    def __init__(self, parent_id, child_id, from_concept_url, to_concept_url, from_concept_name, to_concept_name):
+    def __init__(self, parent_id, child_id, from_concept_url, to_concept_url, from_concept_name, to_concept_name,
+                 from_source_url, to_source_url, map_type):
         self.from_concept_code = child_id
         self.to_concept_code = parent_id
 
@@ -22,7 +23,7 @@ class ConceptMapping:
         self.from_concept_name = from_concept_name
         self.to_concept_name = to_concept_name
 
-        self.from_source_url = "/orgs/MOH-KENYA/sources/PPB_P/"
-        self.to_source_url = "/orgs/MOH-KENYA/sources/PPB_P/"
-        self.map_type = "CONCEPT-SET"
+        self.from_source_url = from_source_url
+        self.to_source_url = to_source_url
+        self.map_type = map_type
         self.retired = False
