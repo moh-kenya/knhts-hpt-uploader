@@ -11,7 +11,7 @@ requests==2.31.0
 ### Importation of
 Maptypes - Medicine scheduling, Dosage form, Routes of admin, Shelf life and Storage conditions\
 Pharmaceuticals\
-Non-pharmaceuticals - Devices, equipments and lab\
+Non-pharmaceuticals - Devices, equipments and lab
 
 
 ### Note
@@ -23,14 +23,14 @@ Use screen as this will take hours to complete.
 
 Edit common/settings.py with the correct Server and Token\
 cd maptypes\
-python main.py\
+python main.py
 
 cd pharma\
-python main.py\
+python main.py
 
 cd non_pharma
 If the concept_id is existing put it in the main file before running to avoid duplicates\
 python main_devices.py to upload devices\
 python main_lab.py to upload Lab\
-python main_equipment.py to upload equipments\
+python main_equipment.py to upload equipments
 
