@@ -1,0 +1,242 @@
+id,Dosage form
+1,Aerosol Spray
+2,Ampoule
+3,Anticoagulant And Preservative Solution For B
+4,Buccal Tablet
+5,Capsule
+6,Capsule Hard
+7,"Capsule, Hard"
+8,"Capsule, Soft"
+9,Chewable Tablet
+10,Chewable/Dispersible Tablet
+11,Coated Tablet
+12,Concentrate And Solvent For Concentrate For S
+13,Concentrate And Solvent For Cutaneous Solutio
+14,Concentrate And Solvent For Solution For Infu
+15,Concentrate And Solvent For Solution For Infusion
+16,Concentrate And Solvent For Solution For Inje
+17,Concentrate And Solvent For Solution For Injection
+18,Concentrate For Cutaneous Solution
+19,Concentrate For Gargle
+20,Concentrate For Oral Solution
+21,Concentrate For Solution For Infusion
+22,Concentrate For Solution For Injection
+23,Cream
+24,Cutaneous Emulsion
+25,Cutaneous Liquid
+26,Cutaneous Powder
+27,Cutaneous Solution
+28,Cutaneous Spray
+29,"Cutaneous Spray, Ointment"
+30,"Cutaneous Spray, Solution"
+31,Cutaneous Suspension
+32,Dental Gel
+33,Dental Paste
+34,Dental Solution
+35,Dispersible Tablet
+36,Dispersion For Injection
+37,Ear Drops
+38,"Ear Drops, Solution"
+39,Ear/Eye Drops
+40,"Ear/Eye Drops, Solution"
+41,"Ear/Eye Drops, Suspension"
+42,"Ear/Eye/Nasal Drops, Solution"
+43,Effervescent Granules
+44,Effervescent Granules For Oral Suspension
+45,Effervescent Powder
+46,Effervescent Powder/satchets
+47,Effervescent Tablet
+48,Emulsion And Suspension For Emulsion For Inje
+49,Emulsion For Infusion
+50,Emulsion For Injection
+51,Emulsion For Injection/Infusion
+52,Enema
+53,Eye Drops
+54,Eye Drops  suspension
+55,Eye Drops Suspension
+56,"Eye Drops, powder and Solvent for Solution"
+57,"Eye Drops, Solution"
+58,"Eye Drops, Suspension"
+59,Eye Gel
+60,Eye Ointment
+61,Film Coated Tablet
+62,Film Coated Tablets
+63,Film-Coated Tablet
+64,Gargle
+65,Gargle/Mouthwash
+66,Gastro-Resistant Tablet
+67,Gastroenteral Solution
+68,Gel
+69,Granules
+70,Granules And Solvent For Oral Suspension
+71,Granules For Oral Solution
+72,Granules For Oral Solution In Sachet
+73,Granules For Oral Solution/satchets
+74,Granules For Oral Suspension
+75,Granules For Oral Suspension In Sachet
+76,Hard Capsule
+77,Hard Gelatin Capsules
+78,Implant
+79,Implant In Pre-Filled Syringe
+80,Infusion
+81,Inhalation Powder
+82,"Inhalation Powder, Hard Capsule"
+83,Inhalation Vapour
+84,"Inhalation Vapour, Capsule"
+85,"Inhalation Vapour, Liquid"
+86,"Inhalation Vapour, Powder"
+87,"Inhalation Vapour, Solution"
+88,Injection
+89,Injection In Pre-Filled Syringe
+90,"Injection, amp"
+91,"Injection, vial"
+92,"Injection,vial"
+93,Intrauterine Delivery System
+94,Intravesical Solution/Solution For Injection
+95,Liquid
+96,Liquid in Frozen Form
+97,Liquid Spray
+98,Lotion
+99,Lozenge
+100,Lyophilisate For Use In Drinking Water
+101,Lyophilized Powder and solvent for solution for injection.
+102,Lyophilized Vaccine
+103,Medicated Chewing-Gum
+104,Modified Release Tablet
+105,Modified-Release Capsule Hard
+106,Modified-Release Tablet
+107,Mouthwash
+108,Nasal Drops
+109,"Nasal Drops, Solution"
+110,Nasal Spray
+111,"Nasal Spray, Solution"
+112,"Nasal Spray, Suspension"
+113,Nebuliser Solution
+114,Nebuliser Suspension
+115,Ointment
+116,Ophthalmic insert
+117,Ophthalmic Solution
+118,Oral Drops
+119,"Oral Drops, Granules For Solution"
+120,"Oral Drops, Liquid"
+121,"Oral Drops, Powder For Suspension"
+122,"Oral Drops, Solution"
+123,"Oral Drops, Suspension"
+124,Oral Emulsion
+125,Oral Gel
+126,Oral Gel in satchet
+127,Oral Liquid
+128,Oral Lyophilisate
+129,Oral Paste
+130,Oral Powder
+131,Oral Powder In Sachet
+132,Oral Solution
+133,Oral Suspension
+134,Oral Suspension In Sachet
+135,Orally disintegrating  tablets
+136,Orally disintegrating Tablets
+137,Orodispersible Film
+138,Orodispersible Tablet
+139,"Oromucosal Spray, Solution"
+140,Pessary
+141,Powder
+142,Powder  For Oral Solution
+143,Powder And Gel For Gel
+144,Powder and Solution for Injection
+145,Powder And Solution For Solution For Injectio
+146,Powder and solution for solution for injection
+147,Powder And Solvent For Concentrate For Solution
+148,Powder and solvent for cutaneous Solution
+149,Powder And Solvent For Emulsion For Injection
+150,Powder And Solvent For Oral Solution
+151,Powder And Solvent For Oral Suspension
+152,Powder And Solvent For Solution For Infusion
+153,Powder And Solvent For Solution For Injection
+154,Powder And Solvent For Suspension For Injecti
+155,Powder and solvent for suspension for injection
+156,Powder And Suspension For Suspension For Injection
+157,Powder For Concentrate For Solution For Infus
+158,Powder For Concentrate For Solution For Injec
+159,Powder For Concentrate For Solution For Injection
+160,Powder For Cutaneous Solution
+161,Powder For Infusion
+162,Powder For Injection
+163,"Powder For Injection, vial"
+164,"Powder For Injection,vial"
+165,Powder For Oral Solution
+166,Powder For Oral Solution In Sachet
+167,Powder For Oral Suspension
+168,Powder For Oral Suspension/Satchet
+169,Powder For Oral/Rectal Suspension
+170,Powder For Solution For Infusion
+171,"Powder For Solution For Infusion,vial"
+172,Powder For Solution For Injection
+173,"Powder For Solution For Injection, vial"
+174,Powder For Solution For Injection/Infusion
+175,"Powder For Solution For Injection/Infusion,vial"
+176,Powder For Suspension
+177,Powder For Suspension For Injection
+178,Powder For Syrup
+179,Powder/Solution For Solution For Injectio
+180,Powder/Solvent For Solution For Injection
+181,PowderFor Injection
+182,Pressurised Inhalation
+183,"Pressurised Inhalation, Solution"
+184,"Pressurised Inhalation, Suspension"
+185,Prolonged Release Tablet
+186,Prolonged-Release Suspension For Injection
+187,Prolonged-Release Tablet
+188,Rectal Capsule
+189,Sealant
+190,Shampoo
+191,Soluble Tablet
+192,Solution
+193,Solution and suspension
+194,Solution And Suspension For Suspension For In
+195,Solution For Infusion
+196,Solution for Infusion in administration Syste
+197,Solution For Infusion In Pre Filled Syringe
+198,Solution For Infusion In Pre-Filled Syringe
+199,Solution For Injection
+200,Solution For Injection In Pre Filled Syringe
+201,Solution For Injection In Pre-Filled Pen
+202,Solution for injection in pre-filled syringe
+203,Solution For Injection/Infusion
+204,Solution for injection/infusion in pre-filled
+205,Solution for injecton
+206,Solvent For Parenteral Use
+207,Solvent For Solution For Infusion
+208,Sterile Concentrate
+209,Sublingual Spray
+210,Sublingual Tablet
+211,Suppository
+212,Suspension
+213,Suspension And Effervescent Granules
+214,Suspension And Effervescent Granules For Oral
+215,Suspension And Solution For Spray
+216,Suspension For Injection
+217,Suspension For Injection In Cartridge
+218,Suspension For Injection In Pre-Filled Pen
+219,Suspension For Injection In Pre-Filled Syring
+220,Suspension/Effervescent Granules For Oral
+221,Sustained Release
+222,Sustained Release Capsule
+223,Sustained Release Tablets
+224,Syrup
+225,Tab
+226,Tablet
+227,Tablet and Capsule
+228,Tablet And Powder For Oral Solution
+229,Tablet For Oral Suspension
+230,"Tablet, Controlled release"
+231,Topical Solution
+232,Transdermal Gel
+233,Transdermal Patch
+234,Transdermal Solution
+235,"Transdermal Spray, Solution"
+236,Transdermal System
+237,Vaginal Capsule
+238,"Vaginal Capsule, Soft"
+239,Vaginal Delivery System
+240,Vaginal Gel
+241,Vaginal Tablet
