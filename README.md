@@ -21,7 +21,7 @@ Use screen as this will take hours to complete.
 
 ## Installation
 
-Edit common/settings.py with the correct Server URL and Token\
+Edit common/settings.py with the correct Server URL and Token
 
 cd maptypes\
 python main.py
@@ -30,7 +30,7 @@ cd pharma\
 python main.py
 
 cd non_pharma\
-If the concept_id is existing put it in the main file before running to avoid duplicates\
+If the concept_id for the subdomain (Medical Supplies, Medical Equipment and Lab Diagnostics) is existing put it in the main file before running to avoid duplicates
 
 python main_devices.py to upload Medical Supplies\
 python main_equipment.py to upload Medical Equipment\
